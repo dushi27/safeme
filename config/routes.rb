@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  root 'static#home'
+  resources :users
 
+  root 'static#home'    
+  get 'static/connect' => 'static#connect'
+  
+  get 'session/login' => 'session#index'  
+  #post 'session/create' => 'session#create'
+  delete 'session/destroy' => 'session#destroy'
+    match 'session', to: 'session#create', via: :post
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

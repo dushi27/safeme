@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  xid: MyString
+  firstname: MyString
+  lastname: MyString
+  my_num: MyString
+  e_num1: MyString
+  e_num2: MyString
+  token: MyString
+  session: f394670d2688e7263f8e229bb5ca5bf9
+
+two:
+  xid: MyString
+  firstname: MyString
+  lastname: MyString
+  my_num: MyString
+  e_num1: MyString
+  e_num2: MyString
+  token: MyString
+  session: b9a646ae3783afda024c9f05fc885f4e
