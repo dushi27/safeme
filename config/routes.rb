@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root 'static#home'    
   get 'static/connect' => 'static#connect'
   
-  get 'session/login' => 'session#get'  
+    get 'session/show' => 'session#show'  
   #post 'session/create' => 'session#create'
   delete 'session/destroy' => 'session#destroy'
   match 'session', to: 'session#create', via: :post

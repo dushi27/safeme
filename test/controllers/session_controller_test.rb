@@ -6,7 +6,7 @@ class SessionControllerTest < ActionController::TestCase
   end
     
   test "should get login page" do
-    get :get
+    get :show
     assert_response :success
   end
     
