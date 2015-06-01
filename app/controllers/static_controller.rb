@@ -16,6 +16,7 @@ class StaticController < ApplicationController
        
      if @user_req.code == 200
        @user = User.create(:xid => @user_req.body['data']['xid'], :firstname => @user_req.body['data']['first'],  :lastname => @user_req.body['data']['last'], :token => @resp.body['access_token'])
+         redirect_to edit_user_path(@user.id)
      end
     end
   end
