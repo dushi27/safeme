@@ -21,12 +21,12 @@ class SessionController < ApplicationController
     end
     
     def destroy
-        unless session[:uid].nil? and session[:hex].nil? and @user.session.nil?  
-            @user = User.find(session[:uid])
-            session[:hex] = nil
-            @user.session = nil
-            @user.save            
-        end
-        redirect_to root_path, notice: 'See you later'
+     unless session[:uid].nil? and session[:hex].nil? and @user.session.nil?  
+       @user = User.find(session[:uid])
+       session[:hex] = nil
+       @user.session = nil
+       @user.save            
+     end
+       redirect_to root_path, notice: 'See you later'
     end
 end
