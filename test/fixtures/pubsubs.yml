@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_xid: MyString
+  type: 
+  action: MyString
+  timestamp: MyString
+
+two:
+  user_xid: MyString
+  type: 
+  action: MyString
+  timestamp: MyString

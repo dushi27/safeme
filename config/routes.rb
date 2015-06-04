@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :pubsubs
+
   resources :users
 
   root 'static#home'    

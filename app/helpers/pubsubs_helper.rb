@@ -1,0 +1,2 @@
+module PubsubsHelper
+end

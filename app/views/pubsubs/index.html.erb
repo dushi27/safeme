@@ -1,0 +1,31 @@
+<h1>Listing pubsubs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User xid</th>
+      <th>Type</th>
+      <th>Action</th>
+      <th>Timestamp</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pubsubs.each do |pubsub| %>
+      <tr>
+        <td><%= pubsub.user_xid %></td>
+        <td><%= pubsub.type %></td>
+        <td><%= pubsub.action %></td>
+        <td><%= pubsub.timestamp %></td>
+        <td><%= link_to 'Show', pubsub %></td>
+        <td><%= link_to 'Edit', edit_pubsub_path(pubsub) %></td>
+        <td><%= link_to 'Destroy', pubsub, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pubsub', new_pubsub_path %>
