@@ -20,8 +20,9 @@ class PubsubsController < ApplicationController
   end
 
   def create
+      data = params[:events]
       
-    @pubsub = Pubsub.new(:user_xid => params[:events][:user_xid], :type => params[:events][:type])
+      @pubsub = Pubsub.new(:user_xid => data[:user_xid], :type => data[:type])
 =begin
     respond_to do |format|    
       if @pubsub.save
