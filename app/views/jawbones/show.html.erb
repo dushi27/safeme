@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User xid:</strong>
+  <%= @jawbone.user_xid %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @jawbone.type %>
+</p>
+
+<p>
+  <strong>Action:</strong>
+  <%= @jawbone.action %>
+</p>
+
+<%= link_to 'Edit', edit_jawbone_path(@jawbone) %> |
+<%= link_to 'Back', jawbones_path %>

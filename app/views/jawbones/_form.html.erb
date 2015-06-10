@@ -1,0 +1,29 @@
+<%= form_for(@jawbone) do |f| %>
+  <% if @jawbone.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@jawbone.errors.count, "error") %> prohibited this jawbone from being saved:</h2>
+
+      <ul>
+      <% @jawbone.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_xid %><br>
+    <%= f.text_field :user_xid %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :action %><br>
+    <%= f.text_field :action %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,29 @@
+<h1>Listing jawbones</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User xid</th>
+      <th>Type</th>
+      <th>Action</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jawbones.each do |jawbone| %>
+      <tr>
+        <td><%= jawbone.user_xid %></td>
+        <td><%= jawbone.type %></td>
+        <td><%= jawbone.action %></td>
+        <td><%= link_to 'Show', jawbone %></td>
+        <td><%= link_to 'Edit', edit_jawbone_path(jawbone) %></td>
+        <td><%= link_to 'Destroy', jawbone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Jawbone', new_jawbone_path %>
