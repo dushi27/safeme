@@ -1,15 +1,10 @@
 Rails.application.routes.draw do
-  resources :pubsubs
-
   resources :users
 
   root 'static#home'    
   get 'static/connect' => 'static#connect'
-  
-    get 'session/show' => 'session#show'  
-  #post 'session/create' => 'session#create'
+  get 'session/show' => 'session#show'  
   delete 'session/destroy' => 'session#destroy'
-    post 'pubsubs/post' => 'pubsubs#create'   #testing the pubsub
   match 'session', to: 'session#create', via: :post
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
