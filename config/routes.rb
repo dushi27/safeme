@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :jawbones
-  match 'band/jawbone', :controller => 'band', :method => 'jawbone', via: :post
+  #match 'band/jawbone', :controller => 'band', :method => 'jawbone', via: :post
+    match 'band/jawbone', to: 'band#jawbone', via: :post
   resources :users
 
   root 'static#home'    
