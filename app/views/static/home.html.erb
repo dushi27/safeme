@@ -4,7 +4,7 @@
     <%if session[:hex].present? %>
         <%=link_to "Log out", session_destroy_path, method: :delete, class: 'btn btn-primary'%>
     <%else%>
-        <%=link_to 'Signup', "https://jawbone.com/auth/oauth2/auth?response_type=code&client_id=Xv1L6lEDVng&scope=basic_read move_read  sleep_read&redirect_uri=https://safeme.herokuapp.com/", :class => 'btn btn-default'%>    
+        <%=link_to 'Signup', "https://jawbone.com/auth/oauth2/auth?response_type=code&client_id=Xv1L6lEDVng&scope=basic_read move_read  sleep_read&redirect_uri=http://safeme.herokuapp.com/static/connect", :class => 'btn btn-default'%>    
         <%=link_to 'Login',session_show_path, :class => 'btn btn-primary'%>
     <%end%>
 </div>
