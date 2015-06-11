@@ -2,15 +2,22 @@ class BandController < ApplicationController
   skip_before_action :verify_authenticity_token
     def jawbone
         unless params[:events].nil?
-            @data = params[:events] 
-            @event = Jawbone.new(:data => params[:events].to_s ) 
-            if @event.save
-               render :json => {:success => 200} 
-            else
-               render :json => {:error => 400} 
-            end
-        else
+            count = Jawbone.all.count
+            
+          params[:events].each do |event|
+            @event = Jawbone.new(:user_xid => event[:user_xid], :type => event[:type], :action => event[:action], :data => params[:events].to_s )
+            @event.save
+          end
+          
+          recount = Jawbone.all.count
+            
+          if recount == count + params[:events].count
+            render :json => {:success => 200} 
+          else
             render :json => {:error => 400} 
+          end
+        else
+            render :json => {:error => 401} 
         end
     end
 
