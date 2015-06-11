@@ -3,10 +3,10 @@ class BandController < ApplicationController
   skip_before_action :verify_authenticity_token
     before_action :init_twillio
     def jawbone
-        unless params[:events].nil?
-            count = Jawbone.all.count
+        render :json => {:error => 400} and return if params[:events].nil?
+        count = Jawbone.all.count
             
-          params[:events].each do |event|
+        params[:events].each do |event|
             @event = Jawbone.new(:user_xid => event[:user_xid], :type => event[:type], :action => event[:action], :data => params[:events].to_s )
             @event.save
                 if should_alert?(@event)  
@@ -16,9 +16,7 @@ class BandController < ApplicationController
                         :body => "Safe.me recognized an alert"
                         )
                 end
-            end
-          end
-          
+          end                    
           recount = Jawbone.all.count
             
           if recount == count + params[:events].count
@@ -26,9 +24,7 @@ class BandController < ApplicationController
           else
             render :json => {:error => 400} 
           end
-        else
-            render :json => {:error => 401} 
-        end
+
     end
     
     
