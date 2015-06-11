@@ -3,7 +3,7 @@ class BandController < ApplicationController
     def jawbone
         unless params[:events].nil?
             @data = params[:events] 
-            @event = Jawbone.new(:data => params[:events] ) 
+            @event = Jawbone.new(:data => params[:events].to_s ) 
             if @event.save
                render :json => {:success => 200} 
             else
