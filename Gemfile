@@ -13,6 +13,7 @@ gem 'spring',        group: :development
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '>= 3.2'
 gem 'unirest'
+gem 'twilio-ruby'
 
 group :development, :test do # <<<< :development, not devlopment
   gem 'sqlite3'
