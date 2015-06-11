@@ -1,4 +1,5 @@
 class BandController < ApplicationController
+  include JawbonesHelper
   skip_before_action :verify_authenticity_token
     def jawbone
         unless params[:events].nil?
@@ -7,6 +8,7 @@ class BandController < ApplicationController
           params[:events].each do |event|
             @event = Jawbone.new(:user_xid => event[:user_xid], :type => event[:type], :action => event[:action], :data => params[:events].to_s )
             @event.save
+            puts 'ALERT' if should_alert?(@event)  
           end
           
           recount = Jawbone.all.count

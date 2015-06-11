@@ -1,7 +1,7 @@
 class JawbonesController < ApplicationController
   before_action :set_jawbone, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token
-    
+           
   def pubsub     
       if params[:some].present?
         render :json => {:success => 200} 
