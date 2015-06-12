@@ -2,6 +2,19 @@ require 'unirest'
 class StaticController < ApplicationController
 
   def home
+      #twilio_sid = ENV['TWILLIO_SID']
+      #twilio_token = ENV['TWILLIO_TOKEN']
+      #twilio_phone_number = ENV['TWILLIO_NUMBER']
+      twilio_sid = 'AC8133cb0651c8818cf31dc3afc25ec549'
+      twilio_token = 'a5dddef5d96e44dd2b8e698505820483'
+      twilio_phone_number ='+19177025523'
+      @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+
+      
+      message = @twilio_client.account.messages.create(
+                        :to => twilio_phone_number,
+                        :from => '+19133966829',                        
+                        :body => "Safe.me recognized an alert")
   end
     
   def connect      

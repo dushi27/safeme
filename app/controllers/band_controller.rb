@@ -1,20 +1,21 @@
 class BandController < ApplicationController
   include JawbonesHelper
   skip_before_action :verify_authenticity_token
-    before_action :init_twillio
+  #before_action :init_twillio
     def jawbone
         render :json => {:error => 400} and return if params[:events].nil?
         count = Jawbone.all.count
             
         params[:events].each do |event|
-            @event = Jawbone.new(:user_xid => event[:user_xid], :type => event[:type], :action => event[:action], :data => params[:events].to_s )
+            @event = Jawbone.new(:user_xid => event[:user_xid], :action => event[:action], :data => params[:events].to_s )
             @event.save
-                if should_alert?(@event)  
-                    @twilio_client.account.sms.messages.create(
-                        :from => '+15005550006',
-                        :to => twilio_phone_number,
-                        :body => "Safe.me recognized an alert"
-                        )
+                if should_alert?(@event) 
+                  puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                  form_number = User.where(:user_xid => @event.user_xid)
+                  message = @twilio_client.account.messages.create(
+                    :to => twilio_phone_number,
+                    :from => '+19133966829',                        
+                    :body => "Safe.me recognized an alert")
                 end
           end                    
           recount = Jawbone.all.count
