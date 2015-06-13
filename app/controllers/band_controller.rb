@@ -18,7 +18,7 @@ class BandController < ApplicationController
                     
                   @client = Twilio::REST::Client.new twilio_sid, twilio_token
                   to_number = User.where(:xid => @event.user_xid).first.my_num
-                  message = @twilio_client.account.messages.create(
+                  message = @client.account.messages.create(
                     :to => to_number,
                     :from => twilio_phone_number,                        
                     :body => "Safe.me recognized an alert")
