@@ -11,6 +11,12 @@ class BandController < ApplicationController
             @event.save
                 if should_alert?(@event) 
                   puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+                  
+                  twilio_sid = ENV['TWILLIO_SID']
+                  twilio_token = ENV['TWILLIO_TOKEN']
+                  twilio_phone_number = ENV['TWILLIO_NUMBER']
+                    
+                  @client = Twilio::REST::Client.new twilio_sid, twilio_token
                   to_number = User.where(:xid => @event.user_xid).first.my_num
                   message = @twilio_client.account.messages.create(
                     :to => to_number,
