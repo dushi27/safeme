@@ -11,10 +11,10 @@ class BandController < ApplicationController
             @event.save
                 if should_alert?(@event) 
                   puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-                  form_number = User.where(:user_xid => @event.user_xid)
+                  form_number = User.where(:user_xid => @event.user_xid).first
                   message = @twilio_client.account.messages.create(
                     :to => twilio_phone_number,
-                    :from => form_number,                        
+                    :from => form_number.my_num,                        
                     :body => "Safe.me recognized an alert")
                 end
           end                    
