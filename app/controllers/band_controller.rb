@@ -22,14 +22,8 @@ class BandController < ApplicationController
                 end
             end
           end                    
-          recount = Jawbone.all.count
             
-          if recount == count + params[:events].count
-            render :json => {:success => 200} 
-          else
-            render :json => {:error => 400} 
-          end
-
+         render :json => {:success => 200} 
     end
     
     private
