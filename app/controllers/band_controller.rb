@@ -1,3 +1,4 @@
+require 'twilio-ruby'
 class BandController < ApplicationController
   include JawbonesHelper
   skip_before_action :verify_authenticity_token
@@ -34,7 +35,10 @@ class BandController < ApplicationController
     private
     
     def set_twillio_client
-        @client = Twilio::REST::Client.new twilio_sid, twilio_token
+     twilio_sid = ENV['TWILLIO_SID']
+     twilio_token = ENV['TWILLIO_TOKEN']
+     twilio_phone_number = ENV['TWILLIO_NUMBER']
+     @client = Twilio::REST::Client.new twilio_sid, twilio_token
     end
 
 end
