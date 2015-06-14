@@ -8,22 +8,21 @@ class BandController < ApplicationController
       render :json => {:error => 400} and return if params[:events].nil?
         
       params[:events].each do |event|
-            next if (Time.now.to_i - event[:timestamp] ) > 60
-            @event = Jawbone.create(:user_xid => event[:user_xid], :event_xid => event[:timestamp], :action => event[:action], :data => params[:events].to_s ).valid?
+        next if (Time.now.to_i - event[:timestamp] ) > 60
+          @event = Jawbone.create(:user_xid => event[:user_xid], :event_xid => event[:timestamp], :action => event[:action], :data => params[:events].to_s ).valid?
             if @event
-                if should_alert?(@event) 
-                    puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"                  
-                    twilio_phone_number = ENV['TWILLIO_NUMBER']
-                    to_number = User.where(:xid => @event.user_xid).first.my_num
-                    message = @client.account.messages.create(
-                        :to => to_number,
-                        :from => twilio_phone_number,                        
-                        :body => "Safe.me recognized an alert")
-                end
+              if should_alert?(@event) 
+                puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"                  
+                twilio_phone_number = ENV['TWILLIO_NUMBER']
+                to_number = User.where(:xid => @event.user_xid).first.my_num
+                 message = @client.account.messages.create(
+                   :to => to_number,
+                   :from => twilio_phone_number,                        
+                   :body => "Safe.me recognized an alert")
+               end
             end
-          end                    
-            
-         render :json => {:success => 200} 
+        end                
+        render :json => {:success => 200} 
     end
     
     private
