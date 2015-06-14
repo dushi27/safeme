@@ -6,21 +6,21 @@ class BandController < ApplicationController
     
     def jawbone
         render :json => {:error => 400} and return if params[:events].nil?
-        count = Jawbone.all.count
-            
+        
         params[:events].each do |event|
-            count - 1 and next if (Time.now.to_i - event[:timestamp] ) > 60000
-            @event = Jawbone.new(:user_xid => event[:user_xid], :action => event[:action], :data => params[:events].to_s )
-            @event.save
+            #next if (Time.now.to_i - event[:timestamp] ) > 60
+            @event = Jawbone.create(:user_xid => event[:user_xid], :event_xid => event[:event_xid], :action => event[:action], :data => params[:events].to_s ).valid?
+            if @event
                 if should_alert?(@event) 
-                  puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"                  
-                  twilio_phone_number = ENV['TWILLIO_NUMBER']
-                  to_number = User.where(:xid => @event.user_xid).first.my_num
-                  message = @client.account.messages.create(
-                    :to => to_number,
-                    :from => twilio_phone_number,                        
-                    :body => "Safe.me recognized an alert")
+                    puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"                  
+                    twilio_phone_number = ENV['TWILLIO_NUMBER']
+                    to_number = User.where(:xid => @event.user_xid).first.my_num
+                    message = @client.account.messages.create(
+                        :to => to_number,
+                        :from => twilio_phone_number,                        
+                        :body => "Safe.me recognized an alert")
                 end
+            end
           end                    
           recount = Jawbone.all.count
             
