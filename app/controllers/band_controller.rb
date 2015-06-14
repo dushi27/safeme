@@ -13,8 +13,8 @@ class BandController < ApplicationController
             @event = Jawbone.new(:user_xid => event[:user_xid], :action => event[:action], :data => params[:events].to_s )
             @event.save
                 if should_alert?(@event) 
-                  puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-                  
+                  puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"                  
+                  twilio_phone_number = ENV['TWILLIO_NUMBER']
                   to_number = User.where(:xid => @event.user_xid).first.my_num
                   message = @client.account.messages.create(
                     :to => to_number,
