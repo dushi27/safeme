@@ -7,6 +7,7 @@ class BandController < ApplicationController
         count = Jawbone.all.count
             
         params[:events].each do |event|
+            count - 1 and next if (Time.now.to_i - event.[:timestamp] ) < 60000
             @event = Jawbone.new(:user_xid => event[:user_xid], :action => event[:action], :data => params[:events].to_s )
             @event.save
                 if should_alert?(@event) 
