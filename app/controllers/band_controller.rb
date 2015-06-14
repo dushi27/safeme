@@ -9,7 +9,7 @@ class BandController < ApplicationController
         
       params[:events].each do |event|
         next if (Time.now.to_i - event[:timestamp] ) > 60
-          @event = Jawbone.create(:user_xid => event[:user_xid], :event_xid => event[:timestamp], :action => event[:action], :data => params[:events].to_s ).valid?
+          @event = Jawbone.create(:user_xid => event[:user_xid], :event_xid => event[:timestamp], :action => event[:action], :data => params[:events].to_s)
             if @event
               if should_alert?(@event) 
                 puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"                  
