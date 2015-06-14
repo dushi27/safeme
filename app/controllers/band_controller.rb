@@ -5,9 +5,9 @@ class BandController < ApplicationController
   before_action :set_twillio_client, only: [:jawbone]
     
     def jawbone
-        render :json => {:error => 400} and return if params[:events].nil?
+      render :json => {:error => 400} and return if params[:events].nil?
         
-        params[:events].each do |event|
+      params[:events].each do |event|
             next if (Time.now.to_i - event[:timestamp] ) > 60
             @event = Jawbone.create(:user_xid => event[:user_xid], :event_xid => event[:timestamp], :action => event[:action], :data => params[:events].to_s ).valid?
             if @event
