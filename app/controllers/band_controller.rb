@@ -2,7 +2,7 @@ require 'twilio-ruby'
 class BandController < ApplicationController
   include JawbonesHelper
   skip_before_action :verify_authenticity_token
-  before_action :set_twillio_client
+  before_action :set_twillio_client, only: [:jawbone]
     
     def jawbone
         render :json => {:error => 400} and return if params[:events].nil?
