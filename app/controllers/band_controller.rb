@@ -8,10 +8,10 @@ class BandController < ApplicationController
       render :json => {:error => 400} and return if params[:events].nil?
         
       params[:events].each do |event|
-          next if (Time.now.to_i - event[:timestamp] ) > 60 or event[:action] == 'updation'
-          @event = Jawbone.create(:user_xid => event[:user_xid], :event_xid => event[:timestamp], :action => event[:action], :data => params[:events].to_s)
-            if @event
-              if should_alert?(@event) 
+        next if (Time.now.to_i - event[:timestamp] ) > 60 or event[:action] != 'enter_sleep_mode' or event[:action] != 'exit_sleep_mode' 
+        @event = Jawbone.create(:user_xid => event[:user_xid], :event_xid => event[:timestamp], :action => event[:action], :data => params[:events].to_s)
+        if @event
+          if should_alert?(@event) 
                 puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"                  
                 twilio_phone_number = ENV['TWILLIO_NUMBER']
                 to_number = User.where(:xid => @event.user_xid).first.my_num
