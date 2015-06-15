@@ -23,7 +23,7 @@ class BandController < ApplicationController
          end                
         render :json => {:success => 200} 
      end
-    
+    end
     private
     
     def set_twillio_client
