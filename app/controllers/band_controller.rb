@@ -8,7 +8,7 @@ class BandController < ApplicationController
       render :json => {:error => 400} and return if params[:events].nil?
         
       params[:events].each do |event|
-        next if (Time.now.to_i - event[:timestamp] ) > 60 or event[:action] != 'enter_sleep_mode' or event[:action] != 'exit_sleep_mode' 
+          next if (Time.now.to_i - event[:timestamp] ) > 60 or event[:action] = 'updating' 
         @event = Jawbone.create(:user_xid => event[:user_xid], :event_xid => event[:timestamp], :action => event[:action], :data => params[:events].to_s)
         if @event.save
               if should_alert?(@event) 
