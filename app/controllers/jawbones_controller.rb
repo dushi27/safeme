@@ -25,7 +25,7 @@ class JawbonesController < ApplicationController
     params[:events].each do |event|
       next if event[:action] = 'updating' # (Time.now.to_i - event[:timestamp] ) > 60 or 
       #@event = Jawbone.new(jawbone_params)
-      @event = Jawbone.create(:user_xid => event[:user_xid], :event_xid => event[:event_xid], :action => event[:action], :data => params[:events].to_s)
+      @event = Jawbone.create(:user_xid => event[:user_xid], :action => event[:action], :data => params[:events].to_s)
           if @event.save
               if should_alert?(@event) 
                   puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"                  
@@ -67,7 +67,7 @@ class JawbonesController < ApplicationController
     end
 
     def jawbone_params
-        params.require(:events).permit(:user_xid, :type, :action)
+        #params.require(:events).permit(:user_xid, :type, :action)
     end          
     
     def set_twillio_client
