@@ -23,7 +23,7 @@ class JawbonesController < ApplicationController
 
   def create            
     params[:events].each do |event|
-      next if event[:action] = 'updating' # (Time.now.to_i - event[:timestamp] ) > 60 or 
+      next if event[:action] == 'updating' # (Time.now.to_i - event[:timestamp] ) > 60 or 
       #@event = Jawbone.new(jawbone_params)
       @event = Jawbone.create(:user_xid => event[:user_xid], :action => event[:action], :data => params[:events].to_s)
           if @event.save
