@@ -4,7 +4,8 @@ Rails.application.routes.draw do
     match 'band/jawbone', to: 'band#jawbone', via: :post
   resources :users
 
-  root 'static#home'    
+    root 'static#index' 
+  #root 'static#home'    
   get 'static/connect' => 'static#connect'
   get 'session/show' => 'session#show'  
   delete 'session/destroy' => 'session#destroy'
