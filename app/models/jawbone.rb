@@ -13,7 +13,7 @@ class Jawbone < ActiveRecord::Base
      @client = Twilio::REST::Client.new twilio_sid, twilio_token
        
      puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"    
-     to_number = User.where(:xid => event.last.user_xid).first.my_num
+     to_number = User.where(:xid => self.user_xid).first.my_num
      message = @client.account.messages.create(
        :to => to_number,
        :from => twilio_phone_number,                        
