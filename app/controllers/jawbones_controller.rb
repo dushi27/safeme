@@ -24,19 +24,22 @@ class JawbonesController < ApplicationController
   def create            
     params[:events].each do |event|
       next if event[:action] == 'updation' or event[:action] == 'creation' # (Time.now.to_i - event[:timestamp] ) > 60 or
-      @event = Jawbone.create(:user_xid => event[:user_xid], :action => event[:action], :data => params[:events].to_s)
+      @event = Jawbone.create(:user_xid => event[:user_xid], 
+                              :action => event[:action], 
+                              :data => params[:events].to_s, 
+                              :timestamp => event[:timestamp])
         
-          #if @event.save
-           #   if should_alert?(@event) 
-            #      puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"                  
-             #     twilio_phone_number = ENV['TWILLIO_NUMBER']
-              #    to_number = User.where(:xid => @event.user_xid).first.my_num
-               #   message = @client.account.messages.create(
-                #      :to => to_number,
-                 #     :from => twilio_phone_number,                        
-                  #    :body => "Safe.me recognized an alert")
-              #end            
-         # end          
+      if @event.save
+         if should_alert?(@event) 
+            puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"                  
+            twilio_phone_number = ENV['TWILLIO_NUMBER']
+            to_number = User.where(:xid => @event.user_xid).first.my_num
+            message = @client.account.messages.create(
+              :to => to_number,
+              :from => twilio_phone_number,                        
+              :body => "Safe.me recognized an alert")
+            end            
+          end          
         end  
       render :json => {:success => 200} 
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150614182849) do
+ActiveRecord::Schema.define(version: 20150809181808) do
 
   create_table "jawbones", force: true do |t|
     t.string   "user_xid"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20150614182849) do
     t.datetime "updated_at"
     t.text     "data"
     t.string   "event_xid"
+    t.string   "timestap"
   end
 
   create_table "users", force: true do |t|
