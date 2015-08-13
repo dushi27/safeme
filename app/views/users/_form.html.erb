@@ -11,35 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
     <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
+    <%= f.text_field :email, :class => 'form-control'%>
+
   <div class="field">
     <%= f.label :password %><br>
-      <%= f.password_field :password %>
+      <%= f.password_field :password, :class => 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :firstname %><br>
-    <%= f.text_field :firstname %>
+    <%= f.text_field :firstname, :class => 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :lastname %><br>
-    <%= f.text_field :lastname %>
+    <%= f.text_field :lastname, :class => 'form-control' %>
   </div>
   <div class="field">
       <%= f.label :Your_Phone_number %><br>
-    <%= f.text_field :my_num %>
+    <%= f.text_field :my_num, :class => 'form-control' %>
   </div>
   <div class="field">
       <%= f.label :Emergency_Contact %><br>
-    <%= f.text_field :e_num1 %>
+    <%= f.text_field :e_num1, :class => 'form-control' %>
   </div>
   <div class="field">
     <%= f.label :Emergency_Contact_Two %><br>
-    <%= f.text_field :e_num2 %>
+    <%= f.text_field :e_num2, :class => 'form-control' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn btn-success', :style => 'margin:0 auto;' %>
   </div>
 <% end %>

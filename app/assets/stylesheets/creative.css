@@ -10,6 +10,10 @@ body {
     height: 100%;
 }
 
+.opening-modal {
+    display:block;
+}
+
 body {
     font-family: Merriweather,'Helvetica Neue',Arial,sans-serif;
 }
