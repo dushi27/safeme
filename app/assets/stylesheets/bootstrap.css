@@ -4904,9 +4904,12 @@ a.thumbnail.active {
 }
 .alert {
   padding: 15px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
+  margin-top:50px;
   border: 1px solid transparent;
   border-radius: 4px;
+  width:100%;
+  text-align:center;
 }
 .alert h4 {
   margin-top: 0;

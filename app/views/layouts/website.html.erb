@@ -34,6 +34,9 @@
 <body id="page-top">
 
   <%=render 'layouts/navbar'%>
+ <% flash.each do |name, msg| %>
+    <%= content_tag(:div, msg, class: "alert alert-warning") %>
+<% end %>
     <header>
         <div class="header-content">
             <div class="header-content-inner">
@@ -160,10 +163,8 @@
             <div class="call-to-action">
               <h1>Log In</h1>
               <%= form_tag("/session", method: "create",:style => 'color:black;') do %>
-                  <%= label_tag(:email, "Email:") %>
-                  <%= text_field_tag(:email,nil, :class => 'form-control')%>
-                  <%= label_tag(:password, "Password:") %>
-                  <%= password_field_tag(:password,nil, :class => 'form-control')%><br>
+                  <%= text_field_tag(:email,nil, :class => 'form-control', :placeholder => 'Email')%><br>
+                  <%= password_field_tag(:password,nil, :class => 'form-control', :placeholder => 'Password')%><br>
                   <%= submit_tag("Login", :class =>'btn btn-lg btn-default') %>
               <% end %>
             </div>

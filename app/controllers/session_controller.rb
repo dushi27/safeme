@@ -6,9 +6,9 @@ class SessionController < ApplicationController
      @user = User.where(:email => params[:email]).first
 
      #validations
-     redirect_to session_show_path, :notice => 'Invalid user' and return if @user.nil?
-     redirect_to root_path, :notice => 'Your are already logged in' and return if !session[:hex].nil?      
-     redirect_to session_show_path, :notice => 'Incorrect password' and return if @user.password !=  Digest::MD5.hexdigest(params[:password])
+     redirect_to root_path, :flash => {notice: 'Invalid user'} and return if @user.nil?
+     redirect_to edit_user_path(@user.id), :flash => {notice: 'Your are already logged in'} and return if !session[:hex].nil?      
+     redirect_to root_path, :flash => {notice: 'Incorrect password'} and return if @user.password !=  Digest::MD5.hexdigest(params[:password])
 
      #login
      @hex = SecureRandom.hex
@@ -17,7 +17,7 @@ class SessionController < ApplicationController
      @user.session = @hex
      @user.save           
     
-     redirect_to root_path, :notice => 'Welcome'
+     redirect_to edit_user_path(@user.id), :flash => {:notice => 'Welcome'}
     end
     
     def destroy
