@@ -1,5 +1,4 @@
 class JawbonesController < ApplicationController
-  http_basic_authenticate_with name: ENV['BASIC_USERNAME'], password: ENV['BASIC_PASSWORD']
   before_action :set_jawbone, only: [:show, :edit, :update, :destroy]
   include JawbonesHelper
   skip_before_action :verify_authenticity_token
