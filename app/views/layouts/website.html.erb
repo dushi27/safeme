@@ -9,24 +9,12 @@
   <meta name="author" content="">
 
   <title>Safeme</title>
+ 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-    
-  
-    <!-- Bootstrap Core CSS
-    <link rel="stylesheet" href="assets/stylesheets/bootstrap.css" type="text/css">  -->
 
-    <!-- Custom Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
-    <!--link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css" type="text/css" -->
-
-    <!-- Plugin CSS 
-    <link rel="stylesheet" href="stylesheets/animate.min.css" type="text/css"> -->
-
-    <!-- Custom CSS 
-    <link rel="stylesheet" href="stylesheets/creative.css" type="text/css"> -->
+    <link href='//fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
 
     <%=render 'layouts/shim'%>
 </head>
@@ -40,9 +28,9 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1>Welcome to Safeme</h1>
+                <h1>Alert your network with the simple press of your Jawbone fitness tracker</h1>
                 <hr>
-                <p>Make your Jawbone UP24 band emergency alert system</p>
+                <p>Winner of the 2014 Clinton Foundation Codeathon</p>
                 <a href="#about" class="btn btn-default btn-xl page-scroll">Learn More</a>
                 <%=link_to 'Signup via Jawbone', "https://jawbone.com/auth/oauth2/auth?response_type=code&client_id=Xv1L6lEDVng&scope=basic_read move_read  sleep_read&redirect_uri=http://safeme.herokuapp.com/static/connect", :class => 'btn btn-success btn-xl page-scroll'%>    
             </div>
@@ -53,11 +41,19 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">We've got what you need!</h2>
+                    <h2 class="section-heading">About Us</h2>
                     <hr class="light">
-                    <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-                    <a href="#" class="btn btn-default btn-xl">Get Started!</a>
-                </div>
+                    <p class="text-faded">Safeme is a safty alert system that enable your Jawbone UP24 fitness tracker to
+                      send out a pre set text message to contacts. You are free to login and change who the message should
+                      go to.</p><br>
+                    <div class='row'>
+                      <div class='col-md-6'><%=link_to image_tag('cf.png'), 'http://bit.ly/1fjf6vS', :target => '_blank'%></div>
+                      <div class='col-md-6'><%=link_to image_tag('bbj.png'), 'http://bit.ly/1JaqMZI', :target => '_blank'%></div>
+                    </div>
+                    <div class='row'>
+                      <div class='col-md-6'><%=link_to image_tag('mt.png'), 'http://bit.ly/1hgVk6a', :target => '_blank'%></div>
+                      <div class='col-md-6'><%=link_to image_tag('self.png'), 'http://on.self.com/1HQbb0c', :target => '_blank'%></div>
+                    </div>
             </div>
         </div>
     </section>
@@ -66,20 +62,21 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">At Your Service</h2>
+                    <h2 class="section-heading">How to Alert</h2><br>
+                    <h4>Enter and Exit from sleep mode in UP24 band with in one minute</h4><br>
                       <section class="no-padding" id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
-                        <%=image_tag "1.jpg", :class => "img-responsive"%>
+                        <%=image_tag "jawbone1.jpg", :class => "img-responsive"%>
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    Step 1
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    Enter Sleep Mode
                                 </div>
                             </div>
                         </div>
@@ -87,14 +84,14 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
-                         <%=image_tag "2.jpg", :class => "img-responsive"%>
+                         <%=image_tag "jawbone2.jpg", :class => "img-responsive"%>
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    Step 2
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    Exit Sleep Mode
                                 </div>
                             </div>
                         </div>
@@ -102,14 +99,14 @@
                 </div>
                 <div class="col-lg-4 col-sm-6">
                     <a href="#" class="portfolio-box">
-                         <%=image_tag "3.jpg", :class => "img-responsive"%>
+                         <%=image_tag "jawbone1.jpg", :class => "img-responsive"%>
                         <div class="portfolio-box-caption">
                             <div class="portfolio-box-caption-content">
                                 <div class="project-category text-faded">
-                                    Category
+                                    Step 3
                                 </div>
                                 <div class="project-name">
-                                    Project Name
+                                    Enter Sleep Mode
                                 </div>
                             </div>
                         </div>
@@ -122,6 +119,7 @@
                 </div>
             </div>
         </div>
+        <!--
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 text-center">
@@ -153,7 +151,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
 
   
