@@ -12,27 +12,29 @@
   <% end %>
 
     <%= f.label :email %><br>
-    <%= f.text_field :email, :class => 'form-control'%>
+    <%= f.text_field :email, :class => 'form-control', :required => 'true', :type => 'email'%>
 
   <div class="field">
     <%= f.label :password %><br>
-      <%= f.password_field :password, :class => 'form-control' %>
+      <%= f.password_field :password, :class => 'form-control', :required => 'true' %>
   </div>
   <div class="field">
-    <%= f.label :firstname %><br>
-    <%= f.text_field :firstname, :class => 'form-control' %>
+    <%= f.label :firstname, 'First Name' %><br>
+    <%= f.text_field :firstname, :class => 'form-control', :required => 'true', :type => 'name'%>
   </div>
   <div class="field">
-    <%= f.label :lastname %><br>
-    <%= f.text_field :lastname, :class => 'form-control' %>
+    <%= f.label :lastname, 'Last Name' %><br>
+    <%= f.text_field :lastname, :class => 'form-control', :required => 'true' , :type => 'name'%>
   </div>
   <div class="field">
-      <%= f.label :Your_Phone_number %><br>
-    <%= f.text_field :my_num, :class => 'form-control' %>
+    <%= f.label :your_phone, 'Your Phone Number' %><br>
+    <%= f.phone_field :my_num, :class => 'form-control', :required => 'true', :type =>'tel',
+        :pattern =>'^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$', :placeholder => 'Ex. 123-123-1234'%>
   </div>
   <div class="field">
-      <%= f.label :Emergency_Contact %><br>
-    <%= f.text_field :e_num1, :class => 'form-control' %>
+      <%= f.label :Emergency_Contact, "Emergency Contact's Phone Number" %><br>
+    <%= f.phone_field :e_num1, :class => 'form-control', :required => 'true', :type =>'tel',
+        :pattern =>'^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$', :placeholder => 'Ex. 123-123-1234'%>
   </div>
   <div class="actions">
     <%= f.submit :class => 'btn btn-success', :style => 'margin:0 auto;' %>
