@@ -14,8 +14,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-    <link href='//fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
-
+  <link href='//fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
     <%=render 'layouts/shim'%>
 </head>
 
@@ -39,14 +38,15 @@
     </header>
 
     <section class="bg-primary" id="about">
-        <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">About Us</h2>
-                    <hr class="light">
-                    <p class="text-faded">Safeme is a safty alert system that enable your Jawbone UP24 fitness tracker to
-                      send out a pre set text message to contacts. You are free to login and change who the message should
-                      go to.</p><br>
+                    <hr>
+                    <h4 >We're a group of Harvard, MIT, and Clark affiliates working on a 
+                     platform for using wearable devices to empower people to overcome the barriers to the 
+                     bystander intervention. For example, by allowing discrete signaling to friends that "this 
+                     person really IS bothering me." It extends the use of fitness bands as a safty alert system 
+                     that enable your Jawbone UP24 fitness tracker to send out a pre set text message to contacts. </h4>
                     <div class='row'>
                       <div class='col-md-6'><%=link_to image_tag('cf.png'), 'http://bit.ly/1fjf6vS', :target => '_blank'%></div>
                       <div class='col-md-6'><%=link_to image_tag('bbj.png'), 'http://bit.ly/1JaqMZI', :target => '_blank'%></div>
@@ -56,15 +56,17 @@
                       <div class='col-md-6'><%=link_to image_tag('self.png'), 'http://on.self.com/1HQbb0c', :target => '_blank'%></div>
                     </div>
             </div>
-        </div>
     </section>
 
     <section id="howitworks">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">How to Alert</h2><br>
-                    <h4>Enter and Exit from sleep mode in UP24 band with in one minute</h4><br>
+                    <h2 class="section-heading">How It Works</h2><hr>
+                    <h4>SafeMe enable your UP24 band to work as a safty alert system. You can sign up to Safeme via 
+                    Jawbone and make sure to enter your phone and your emergency contact's phone. In case of an 
+                    threatening situation you can Enter and Exit from sleep mode in UP24 band with in one minute. PLEASE 
+                    NOTE: currently SafeMe is a beta product.</h4><br>
                       <section class="no-padding" id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter">
@@ -116,7 +118,7 @@
             </div>
         </div>               
     </section>
-                    <hr class="primary">
+                   
                 </div>
             </div>
         </div>
