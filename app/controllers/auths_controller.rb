@@ -4,7 +4,7 @@ class AuthsController < ApplicationController
   before_action :set_req_variables, only: [:auth_request]
   
   def auth_request
-    redirect_to "https://#{@base}response_type=code&client_id=#{$jb_client_id}&scope=#{@scopes}&redirect_uri=#{@redirect_url}"
+    redirect_to "//#{@base}response_type=code&client_id=#{$jb_client_id}&scope=#{@scopes}&redirect_uri=#{@redirect_url}"
   end
 
   def auth_response  
