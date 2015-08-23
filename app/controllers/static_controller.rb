@@ -8,7 +8,8 @@ class StaticController < ApplicationController
 
   def home      
   end
-    
+
+=begin    
   def connect      
       @code = params[:code]
       @client_id = 'Xv1L6lEDVng'
@@ -24,5 +25,5 @@ class StaticController < ApplicationController
          redirect_to edit_user_path(@user.id)
      end
     end
-  end
+=end
 end
