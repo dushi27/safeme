@@ -5,8 +5,7 @@ class Jawbone < ActiveRecord::Base
     
   def should_alert?
     events = Jawbone.where(:user_xid => self.user_xid, :responded => nil).order(:timestamp).limit(3)     
-    return if events.count < 3 
-    return if (events.last.timestamp - events.first.timestamp) > 60
+    return if events.count < 3 or (events.last.timestamp - events.first.timestamp) > 60
     events.each {|e| return unless e.action == 'enter_sleep_mode' or e.action 'exit_sleep_mode'}
     true   
   end    
@@ -14,12 +13,11 @@ class Jawbone < ActiveRecord::Base
  private
   def alert
    return unless should_alert?
-
    user = User.where(:xid => self.user_xid).first
    to_number = user.e_num1
    band_owner = user.firstname + user.lastname
-   
-   $client.account.messages.create(:to => to_number, :from => $twilio_phone_number,                        
+   message = $client.account.messages.create(:to => to_number, :from => $twilio_phone_number,                        
                                    :body => "Safe.me recognized an alert from #{band_owner}")
+   self.responded = ture if message
   end
 end

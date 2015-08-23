@@ -25,7 +25,7 @@ class JawbonesController < ApplicationController
 
   def create            
     params[:events].each do |event|
-      render :json => {:success => 200} and next unless event[:action] == 'creation'
+      jawbone_params={:user_xid => event[:user_xid],:action => event[:action],:data => params[:events].to_s,:timestamp => event[:timestamp]}
       @event = Jawbone.create(jawbone_params)
 =begin
       if @event.save
@@ -73,10 +73,6 @@ class JawbonesController < ApplicationController
     
     def validate
       render :json => {:error => 400} and return if params[:events].nil?
-      jawbone_params = {:user_xid => event[:user_xid], 
-                        :action => event[:action], 
-                        :data => params[:events].to_s, 
-                        :timestamp => event[:timestamp]}
     end
 
     def jawbone_params
