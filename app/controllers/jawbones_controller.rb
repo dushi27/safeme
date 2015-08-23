@@ -1,7 +1,8 @@
 class JawbonesController < ApplicationController
-  before_action :set_jawbone, only: [:show, :edit, :update, :destroy]
   include JawbonesHelper
-  skip_before_action :verify_authenticity_token
+  before_action :set_jawbone, only: [:show, :edit, :update, :destroy]
+  before_action :validate, only:[:create]
+  skip_before_action :verify_authenticity_token, only: [:create]
   before_action :set_twillio_client, only: [:create]
   
            
@@ -24,11 +25,9 @@ class JawbonesController < ApplicationController
 
   def create            
     params[:events].each do |event|
-      render :json => {:success => 200} and return if event[:action] == 'updation' or event[:action] == 'creation' # (Time.now.to_i - event[:timestamp] ) > 60 or
-      @event = Jawbone.create(:user_xid => event[:user_xid], 
-                              :action => event[:action], 
-                              :data => params[:events].to_s, 
-                              :timestamp => event[:timestamp])
+      render :json => {:success => 200} and next unless event[:action] == 'creation'
+      @event = Jawbone.create(jawbone_params)
+=begin
       if @event.save
         if should_alert?(@event) 
           puts "ALERT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"                  
@@ -42,7 +41,7 @@ class JawbonesController < ApplicationController
             
           puts "sent message.............." if message
         end          
-      end  
+=end  
     end
       render :json => {:success => 200} 
   end
@@ -70,6 +69,14 @@ class JawbonesController < ApplicationController
   private
     def set_jawbone
       @jawbone = Jawbone.find(params[:id])
+    end
+    
+    def validate
+      render :json => {:error => 400} and return if params[:events].nil?
+      jawbone_params = {:user_xid => event[:user_xid], 
+                        :action => event[:action], 
+                        :data => params[:events].to_s, 
+                        :timestamp => event[:timestamp]}
     end
 
     def jawbone_params

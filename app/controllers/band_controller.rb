@@ -1,11 +1,11 @@
 require 'twilio-ruby'
 class BandController < ApplicationController
   include JawbonesHelper
-  skip_before_action :verify_authenticity_token
+  skip_before_action :verify_authenticity_token, only: [:create]
   before_action :set_twillio_client, only: [:jawbone]
     
     def jawbone
-      render :json => {:error => 400} and return if params[:events].nil?
+     
         
       params[:events].each do |event|
           next if event[:action] = 'updating' # (Time.now.to_i - event[:timestamp] ) > 60 or 
