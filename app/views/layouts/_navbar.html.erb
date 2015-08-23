@@ -20,10 +20,10 @@
                 <li>
                   <a class="page-scroll" href="#howitworks">How it Works</a>
                 </li>
-                <%unless session[:uid].nil?%>
-                  <li><%=link_to "Logout", session_destroy_path, method: :delete, class: 'page-scroll'%></li>
-                <%else%>
+                <%unless session[:uid].present?%>
                   <li><a class="page-scroll" href="#login">Login</a></li>
+                <%else%>
+                  <li><%=link_to "Logout", session_destroy_path, method: :delete, class: 'page-scroll'%></li>
                 <%end%>
               </ul>
             </div>
