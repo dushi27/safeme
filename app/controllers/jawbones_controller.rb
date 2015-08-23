@@ -81,5 +81,5 @@ class JawbonesController < ApplicationController
      twilio_token = ENV['TWILLIO_TOKEN']
      twilio_phone_number = ENV['TWILLIO_NUMBER']
      @client = Twilio::REST::Client.new twilio_sid, twilio_token
-   end
+    end
 end
