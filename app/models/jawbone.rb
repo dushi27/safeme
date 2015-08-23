@@ -10,7 +10,7 @@ class Jawbone < ActiveRecord::Base
     true   
   end    
     
- private
+ 
   def alert
    return unless should_alert?
    user = User.where(:xid => self.user_xid).first
@@ -18,6 +18,9 @@ class Jawbone < ActiveRecord::Base
    band_owner = user.firstname + user.lastname
    message = $client.account.messages.create(:to => to_number, :from => $twilio_phone_number,                        
                                    :body => "Safe.me recognized an alert from #{band_owner}")
-   self.responded = ture if message
+   if message
+    events = Jawbone.where(:user_xid => self.user_xid, :responded => nil).order(:timestamp).limit(3)  
+    events.each {|e| e.responded = ture; e.save }
+   end
   end
 end
