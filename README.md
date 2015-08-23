@@ -13,9 +13,9 @@ Step 1: Click the 'Fork' button on the top right on your screen. That will creat
 Step 2: In your command line/ terminal run
 
 ```bash
-$ git clone GIT CLONE URL 
+$ git clone GIT-CLONE-URL 
 ```
-GIT CLONE URL = https://github.com/INSERT YOUR USERNAME/Twitter.git or you can copy the "HTTP CLONE url"
+GIT-CLONE-URL = https://github.com/dushi27/safeme.git
 
 Step 3: Run the following commands 
 to install the necessary gems 
