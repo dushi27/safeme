@@ -1,6 +1,6 @@
 ##SafeMe
 
-Safeme enable users to alert their network if in a threatening situation with the simple press of their Jawbone fitness tracker. Please visit our [website] (https://safemeapp.herokuapp.com) or if you want to see [pretter docs](http://dushi27.github.io/safeme). 
+Safeme enable users to alert their network if in a threatening situation with the simple press of their Jawbone fitness tracker. Please visit our [website] (https://safeme.herokuapp.com) or if you want to see [pretter docs](http://dushi27.github.io/safeme). 
 
 ##Technical Specs
 
