@@ -5,8 +5,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="Safeme fitness band safty alert system">
+  <meta name="author" content="Dushyanthi Pieris">
 
   <title>Safeme</title>
  
@@ -14,164 +14,39 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 
-  <link href='//fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
-    <%=render 'layouts/shim'%>
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,600' rel='stylesheet' type='text/css'>
+  <%=render 'layouts/shim'%>
 </head>
-
 <body id="page-top">
 
-  <%=render 'layouts/navbar'%>
+ <%=render 'layouts/navbar'%>
  <% flash.each do |name, msg| %>
-    <%= content_tag(:div, msg, class: "alert alert-warning") %>
-<% end %>
-    <header>
-        <div class="header-content">
-            <div class="header-content-inner">
-                <h1>Alert your network with the simple press of your Jawbone fitness tracker</h1>
-                <hr>
-                <p>Winner of the 2014 Clinton Foundation Codeathon</p>
-                <a href="#about" class="btn btn-xl page-scroll" style='color:white; border:2px solid white;'>Learn More</a>
-                <%=link_to 'Try It', "https://jawbone.com/auth/oauth2/auth?response_type=code&client_id=Xv1L6lEDVng&scope=basic_read move_read  sleep_read&redirect_uri=http://safeme.herokuapp.com/static/connect", 
-                :class => 'btn btn-default btn-xl page-scroll'%>    
-            </div>
-        </div>
-    </header>
-
-    <section class="bg-primary" id="about">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">About Us</h2>
-                    <hr>
-                    <h4 >We're a group of Harvard, MIT, and Clark affiliates working on a 
-                     platform for using wearable devices to empower people to overcome the barriers to the 
-                     bystander intervention. For example, by allowing discrete signaling to friends that "this 
-                     person really IS bothering me." It extends the use of fitness bands as a safty alert system 
-                     that enable your Jawbone UP24 fitness tracker to send out a pre set text message to contacts. </h4>
-                    <div class='row'>
-                      <div class='col-md-6'><%=link_to image_tag('cf.png'), 'http://bit.ly/1fjf6vS', :target => '_blank'%></div>
-                      <div class='col-md-6'><%=link_to image_tag('bbj.png'), 'http://bit.ly/1JaqMZI', :target => '_blank'%></div>
-                    </div>
-                    <div class='row'>
-                      <div class='col-md-6'><%=link_to image_tag('mt.png'), 'http://bit.ly/1hgVk6a', :target => '_blank'%></div>
-                      <div class='col-md-6'><%=link_to image_tag('self.png'), 'http://on.self.com/1HQbb0c', :target => '_blank'%></div>
-                    </div>
-            </div>
-    </section>
-
-    <section id="howitworks">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">How It Works</h2><hr>
-                    <h4>SafeMe enable your UP24 band to work as a safty alert system. You can sign up to Safeme via 
-                    Jawbone and make sure to enter your phone and your emergency contact's phone. In case of an 
-                    threatening situation you can Enter and Exit from sleep mode in UP24 band with in one minute. PLEASE 
-                    NOTE: currently SafeMe is a beta product.</h4><br>
-                      <section class="no-padding" id="portfolio">
-        <div class="container-fluid">
-            <div class="row no-gutter">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                        <%=image_tag "jawbone1.jpg", :class => "img-responsive"%>
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Step 1
-                                </div>
-                                <div class="project-name">
-                                    Enter Sleep Mode
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                         <%=image_tag "jawbone2.jpg", :class => "img-responsive"%>
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Step 2
-                                </div>
-                                <div class="project-name">
-                                    Exit Sleep Mode
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#" class="portfolio-box">
-                         <%=image_tag "jawbone1.jpg", :class => "img-responsive"%>
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Step 3
-                                </div>
-                                <div class="project-name">
-                                    Enter Sleep Mode
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>               
-    </section>
-                   
-                </div>
-            </div>
-        </div>
-        <!--
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-diamond wow bounceIn text-primary"></i>
-                        <h3>Sturdy Templates</h3>
-                        <p class="text-muted">Our templates are updated regularly so they don't break.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-paper-plane wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                        <h3>Ready to Ship</h3>
-                        <p class="text-muted">You can use this theme as is, or you can make changes!</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-newspaper-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
-                        <h3>Up to Date</h3>
-                        <p class="text-muted">We update dependencies to keep things fresh.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 text-center">
-                    <div class="service-box">
-                        <i class="fa fa-4x fa-heart wow bounceIn text-primary" data-wow-delay=".3s"></i>
-                        <h3>Made with Love</h3>
-                        <p class="text-muted">You have to make your websites with love these days!</p>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-    </section>
-
+ <%= content_tag(:div, msg, class: "alert alert-warning") %>
+ <% end %>
+  <header>
+    <%=render 'layouts/header'%>
+  </header>
   
-
-    <aside class="bg-dark" id='login'>
-        <div class="container text-center">
-            <div class="call-to-action">
-              <h1>Log In</h1>
-              <%= form_tag("/session", method: "create",:style => 'color:black;') do %>
-                  <%= text_field_tag(:email,nil, :class => 'form-control', :placeholder => 'Email')%><br>
-                  <%= password_field_tag(:password,nil, :class => 'form-control', :placeholder => 'Password')%><br>
-                  <%= submit_tag("Login", :class =>'btn btn-lg btn-default') %>
-              <% end %>
-            </div>
-        </div>
-    </aside>
+  <section class="bg-primary" id="about">
+    <%=render 'layouts/about'%>
+  </section>
+  
+  <section id="howitworks">
+    <%=render 'layouts/howitworks'%>
+  </section><!-- End of #howitworks -->
+  
+  <aside class="bg-dark" id='login'>
+    <div class="container text-center">
+      <div class="call-to-action">
+        <h1>Log In</h1>
+        <%= form_tag("/session", method: "create",:style => 'color:black;') do %>
+          <%= text_field_tag(:email,nil, :class => 'form-control', :placeholder => 'Email')%><br>
+          <%= password_field_tag(:password,nil, :class => 'form-control', :placeholder => 'Password')%><br>
+          <%= submit_tag("Login", :class =>'btn btn-lg btn-default') %>
+        <% end %>
+      </div>
+    </div>
+  </aside>
 
 </body>
-
 </html>

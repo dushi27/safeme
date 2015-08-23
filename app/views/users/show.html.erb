@@ -1,23 +1,9 @@
-<p>
-  <strong>Firstname:</strong>
-  <%= @user.firstname %>
-</p>
-
-<p>
-  <strong>Lastname:</strong>
-  <%= @user.lastname %>
-</p>
-
-<p>
-  <strong>My Phone:</strong>
-  <%= @user.my_num %>
-</p>
-
-<p>
-  <strong>Emergency_Contact's Phone:</strong>
-  <%= @user.e_num1 %>
-</p>
+<div class='dashboard'>
+  <h1>Hi <%= @user.firstname %>,</h1>
+  <h4>To alert your emergency contact: <%= @user.e_num1 %>, enter and exit from sleep mode on your UP24 band</h4>
+  <%=render 'layouts/alertprocess'%>
 
 
-
-<%= link_to 'Edit', edit_user_path(@user) %>
+<br>
+<%= link_to 'Edit Profile', edit_user_path(@user), :class => 'btn btn-lg btn-empty' %>
+</div>
