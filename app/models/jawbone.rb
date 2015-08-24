@@ -3,7 +3,7 @@ class Jawbone < ActiveRecord::Base
     
   def should_alert?
     events = Jawbone.where(:user_xid => self.user_xid, :responded => nil).order(:timestamp).limit(3)
-    #and action = 'enter_sleep_mode' OR action = 'exit_sleep_mode'was removed bcz some pubsub resp. didn't have it
+    events.each {|e| return if  e.action != 'enter_sleep_mode' or e.action != 'exit_sleep_mode'}
     return if events.count < 3 or (events.last.created_at - events.first.created_at) > 60
     true   
   end    
