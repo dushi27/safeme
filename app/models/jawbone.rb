@@ -3,9 +3,10 @@ class Jawbone < ActiveRecord::Base
     
   def should_alert?
     events = Jawbone.where(:user_xid => self.user_xid, :responded => nil).order(:created_at).limit(3)
-    return false if  events[0].action == 'updation' 
-    return false if  events[1].action == 'updation' 
-    return false if  events[2].action == 'updation' 
+    #return false if  events[0].action == 'updation' 
+    #return false if  events[1].action == 'updation' 
+    #return false if  events[2].action == 'updation'
+    return false if Jawbone.where(:user_xid => self.user_xid).count > 3
     return false if events.count < 3 or (events.last.created_at - events.first.created_at) > 60
     return true   
   end    
