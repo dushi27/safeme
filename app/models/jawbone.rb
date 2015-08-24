@@ -4,8 +4,8 @@ class Jawbone < ActiveRecord::Base
   #validates :event_xid, uniqueness: true
     
   def should_alert?
-    events = Jawbone.find_by_sql("SELECT * from jawbones where user_xid='#{self.user_xid}' AND responded <> true and action = 
-    'enter_sleep_mode' OR action = 'exit_sleep_mode' ORDER BY timestamp DESC LIMIT 3")  
+    events = Jawbone.find_by_sql("SELECT * from jawbones where user_xid='#{self.user_xid}' AND responded <> true ORDER BY timestamp DESC LIMIT 3")  
+   #and action =     'enter_sleep_mode' OR action = 'exit_sleep_mode' 
     return if events.count < 3 or (events.first.timestamp.to_i - events.last.timestamp.to_i) > 60
     events.each {|e| return unless e.action == 'enter_sleep_mode' or e.action 'exit_sleep_mode'}
     true   

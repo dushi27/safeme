@@ -3,10 +3,6 @@ class JawbonesController < ApplicationController
   #before_action :set_jawbone, only: [:show, :edit, :update, :destroy]
   before_action :validate, only:[:create]
   skip_before_action :verify_authenticity_token, only: [:create]
-  
-           
-  def pubsub 
-  end
 
   def index
     @jawbones = Jawbone.all
@@ -25,7 +21,7 @@ class JawbonesController < ApplicationController
   def create            
     params[:events].each do |event|
       jawbone_params={:user_xid => event[:user_xid],:action => event[:action],:data => params[:events].to_s,
-      :timestamp => event[:timestamp].to_s}
+      :timestamp => event[:timestamp].to_s, :type => event[:type]}
       @event = Jawbone.create(jawbone_params)
 
     end
