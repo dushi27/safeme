@@ -1,5 +1,5 @@
 class JawbonesController < ApplicationController
-  include JawbonesHelper
+  http_basic_authenticate_with name: ENV["SAFEME_NAME"], password: ENV["SAFEME_SECRET"], except: :create
   #before_action :set_jawbone, only: [:show, :edit, :update, :destroy]
   before_action :validate, only:[:create]
   skip_before_action :verify_authenticity_token, only: [:create]
@@ -54,7 +54,7 @@ class JawbonesController < ApplicationController
     end
     
     def validate
-      render :json => {:error => 400} and return if params[:events].nil?
+      render :json => {:error => 400} and return if params[:events].nil? or params[:secret_hash] != ENV['JAWBONE_SH']
     end
 
     def jawbone_params

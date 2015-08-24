@@ -1,14 +1,11 @@
 Rails.application.routes.draw do
   resources :jawbones
-  match 'band/jawbone', to: 'band#jawbone', via: :post
   
   resources :users
   
-  get 'auth_request' => 'auths#auth_request'
   get 'auth_response' => 'auths#auth_response'
 
   root 'static#index' 
-  get 'static/connect' => 'static#connect'
   
   get 'session/show' => 'session#show'  
   delete 'session/destroy' => 'session#destroy'

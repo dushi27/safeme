@@ -1,11 +1,7 @@
 require 'unirest'
 class AuthsController < ApplicationController
   before_action :set_resp_variables, only: [:auth_response]
-  before_action :set_req_variables, only: [:auth_request]
-  
-  def auth_request
-    redirect_to "//#{@base}response_type=code&client_id=#{$jb_client_id}&scope=#{@scopes}&redirect_uri=#{@redirect_url}"
-  end
+
 
   def auth_response  
     req = "https://jawbone.com/auth/oauth2/token?client_id=#{$jb_client_id}&client_secret=#{$jb_secret}&grant_type=authorization_code&code=#{params[:code]}"

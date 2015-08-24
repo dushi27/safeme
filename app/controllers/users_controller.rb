@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  http_basic_authenticate_with name: ENV["SAFEME_NAME"], password: ENV["SAFEME_SECRET"], only: [:index]
 
   def index
     @users = User.all
