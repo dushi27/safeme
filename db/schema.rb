@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150809204333) do
+ActiveRecord::Schema.define(version: 20150824013927) do
 
   create_table "jawbones", force: true do |t|
     t.string   "user_xid"
-    t.string   "type"
+    t.string   "jawbone_type"
     t.string   "action"
     t.datetime "created_at"
     t.datetime "updated_at"

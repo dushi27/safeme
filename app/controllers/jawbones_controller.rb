@@ -20,8 +20,8 @@ class JawbonesController < ApplicationController
 
   def create            
     params[:events].each do |event|
-      jawbone_params={:user_xid => event[:user_xid],:action => event[:action],:data => params[:events].to_s,
-      :timestamp => event[:timestamp].to_s, :type => event[:type]}
+      jawbone_params={:user_xid => event['user_xid'],:action => event['action'],:data => params['events'].to_s,
+      :timestamp => event['timestamp'].to_s, :jawbone_type => event['type']}
       @event = Jawbone.create(jawbone_params)
 
     end
