@@ -1,5 +1,5 @@
 class Jawbone < ActiveRecord::Base
- after_create :alert
+ after_commit :alert
     
   def should_alert?
     events = Jawbone.where(:user_xid => self.user_xid, :responded => nil).order(:timestamp).limit(3)
@@ -13,10 +13,11 @@ class Jawbone < ActiveRecord::Base
    return unless should_alert?
    user = User.where(:xid => self.user_xid).first
    to_number = user.e_num1
-   band_owner = user.firstname + user.lastname
+   band_owner = user.firstname + ' ' + user.lastname
    message = $client.account.messages.create(:to => to_number, :from => $twilio_phone_number,                        
                                    :body => "Safe.me recognized an alert from #{band_owner}")
    if message
+    puts 'SENT THE MESSAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!'
     events = Jawbone.where(:user_xid => self.user_xid, :responded => nil).order(:timestamp).limit(3)  
     events.each {|e| e.responded = ture; e.save }
    end
