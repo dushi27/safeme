@@ -2,12 +2,12 @@ class Jawbone < ActiveRecord::Base
  after_commit :alert
     
   def should_alert?
-    events = Jawbone.where(:user_xid => self.user_xid, :responded => nil).order(:timestamp).limit(3)
-    return if  events[0].action == 'updation' 
-    return if  events[1].action == 'updation' 
-    return if  events[2].action == 'updation' 
-    return if events.count < 3 or (events.last.created_at - events.first.created_at) > 60
-    true   
+    events = Jawbone.where(:user_xid => self.user_xid, :responded => nil).order(:created_at).limit(3)
+    return false if  events[0].action == 'updation' 
+    return false if  events[1].action == 'updation' 
+    return false if  events[2].action == 'updation' 
+    return false if events.count < 3 or (events.last.created_at - events.first.created_at) > 60
+    return true   
   end    
     
  
