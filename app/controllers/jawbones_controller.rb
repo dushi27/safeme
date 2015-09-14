@@ -52,6 +52,6 @@ class JawbonesController < ApplicationController
     end
     
     def validate
-      render :json => {:error => 400} and return if params[:events].nil? or params[:secret_hash] != ENV['JAWBONE_SH']
+      render :json => {:status => 400} and return if params[:events].nil? or params[:secret_hash] != ENV['JAWBONE_SH']
     end
 end
