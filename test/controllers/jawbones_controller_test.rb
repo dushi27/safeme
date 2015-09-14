@@ -18,7 +18,7 @@ class JawbonesControllerTest < ActionController::TestCase
 
   test "should create jawbone" do
     assert_difference('Jawbone.count') do
-      post :create, jawbone: { action: @jawbone.action, type: @jawbone.type, user_xid: @jawbone.user_xid }
+      post :create, jawbone: { action: @jawbone.action, user_xid: @jawbone.user_xid }
     end
 
     assert_redirected_to jawbone_path(assigns(:jawbone))
@@ -35,7 +35,7 @@ class JawbonesControllerTest < ActionController::TestCase
   end
 
   test "should update jawbone" do
-    patch :update, id: @jawbone, jawbone: { action: @jawbone.action, type: @jawbone.type, user_xid: @jawbone.user_xid }
+    patch :update, id: @jawbone.id, jawbone: { action: @jawbone.action, user_xid: @jawbone.user_xid }
     assert_redirected_to jawbone_path(assigns(:jawbone))
   end
 

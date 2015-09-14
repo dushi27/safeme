@@ -4,6 +4,10 @@ class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
   end
+  
+  test 'should create a valid user' do
+    assert true if @user.valid?
+  end
 
   test "should get index" do
     get :index
@@ -18,7 +22,7 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should create user" do
     assert_difference('User.count') do
-      post :create, user: { e_num1: @user.e_num1, e_num2: @user.e_num2, firstname: @user.firstname, lastname: @user.lastname, my_num: @user.my_num, token: @user.token, xid: @user.xid }
+      post :create, user: { e_num1: @user.e_num1, e_num2: @user.e_num2, firstname: @user.firstname, lastname: @user.lastname, my_num: @user.my_num, token: @user.token, xid: '1123' }
     end
 
     assert_redirected_to user_path(assigns(:user))

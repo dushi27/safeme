@@ -1,5 +1,9 @@
 class Jawbone < ActiveRecord::Base
- after_commit :alert
+  belongs_to :users  
+  
+  validates :user_xid, presence: true
+  
+  after_commit :alert
     
   def should_alert?
     events = Jawbone.where(:user_xid => self.user_xid, :responded => nil).order(:created_at).limit(3)

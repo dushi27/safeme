@@ -2,10 +2,8 @@
 
 one:
   user_xid: MyString
-  type: 
   action: MyString
 
 two:
   user_xid: MyString
-  type: 
   action: MyString

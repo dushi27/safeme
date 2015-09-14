@@ -1,33 +1,28 @@
-  <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand page-scroll" href="/" style='color:black;'>Safeme</a>
-            </div>
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand page-scroll" href="/" style='color:black;'>Safeme</a>
+    </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-right">
-                <li>
-                  <a class="page-scroll" href="#about">About</a>
-                </li>
-                <li>
-                  <a class="page-scroll" href="#howitworks">How it Works</a>
-                </li>
-                <%unless session[:uid].present?%>
-                  <li><a class="page-scroll" href="#login">Login</a></li>
-                <%else%>
-                  <li><%=link_to "Logout", session_destroy_path, method: :delete, class: 'page-scroll'%></li>
-                <%end%>
-              </ul>
-            </div>
-            <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <%unless session[:uid].present?%>
+            <li><a class="page-scroll" href="#about">About</a></li>
+            <li><a class="page-scroll" href="#howitworks">How it Works</a></li>
+            <li><a class="page-scroll" href="#login">Login</a></li>
+          <%else%>
+            <li><%=link_to "Profile", user_path(session[:uid]), class: 'page-scroll'%></li>
+            <li><%=link_to "Logout", session_destroy_path, method: :delete, class: 'page-scroll'%></li>
+          <%end%>
+        </ul>
+      </div>
+  </div>
+</nav>

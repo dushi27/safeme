@@ -5,13 +5,17 @@ class SessionControllerTest < ActionController::TestCase
     @user = users(:one)
   end
     
+  test 'should have a valid user' do
+    assert true if @user.valid?
+  end
+  
   test "should get login page" do
     get :show
     assert_response :success
   end
     
   test "should login the user" do
-      post :create, :params => {email: @user.email, password: @user.password}     
+    post :create, :params => {email: @user.email, password: @user.password}     
     assert_equal 'Welcome', flash[:notice]
   end
   
